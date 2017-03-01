@@ -32,7 +32,7 @@ You should install the react-native-cli first, and create a project.
 Using npm to install it:
 
 ```sh
-	npm install git:sunxfancy/react-native-ubuntu
+	npm install http://github.com/sunxfancy/react-native-ubuntu --save
 ```
 
 And init it first:
