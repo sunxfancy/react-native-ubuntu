@@ -51,14 +51,9 @@ module.exports = yeoman.generators.NamedBase.extend({
     };
 
     this.fs.copyTpl(
-      this.templatePath(''),
-      this.destinationPath(path.join('ubuntu', 'CMakeLists.txt')),
+      this.templatePath('index.ubuntu.js'),
+      this.destinationPath('index.ubuntu.js'),
       templateParams
-    );
-    this.fs.copyTpl(
-      this.templatePath('index.ubuntu.bundle'),
-      this.destinationPath(path.join('ubuntu', this.name, 'ReactAssets', 'index.ubuntu.bundle')),
-      templateVars
     );
 
     this.fs.copyTpl(
