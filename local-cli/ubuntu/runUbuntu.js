@@ -88,8 +88,9 @@ function actuallyRun(args, reject) {
 }
 
 function startServerInNewWindow() {
-  const packagerPath = path.resolve(__dirname, '..', '..', 'packager', 'packager.sh');
-  child_process.spawn('gnome-terminal',['-e', packagerPath],{detached: true});
+  const packagerPath = path.resolve(__dirname, '../../../react-native/local-cli/cli.js');
+  const packager = 'node ' + packagerPath + ' start';
+  child_process.spawn('gnome-terminal',['-e', packager], {detached: true});
 }
 
 module.exports = runUbuntu;

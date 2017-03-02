@@ -7,7 +7,7 @@ This is an unofficial fork of <https://github.com/CanonicalLtd/react-native>
 It changed the core structure without rebuild react-native tools.
 
 
-## features
+## Features
 
 - Fix some bugs and update to newest react-native.
 - Using plugin model works with official react-native-cli
@@ -67,6 +67,6 @@ exports.providesModuleNodeModules = [
 When this project become stable, I will ask them to add this platform. 
 
 
-## LICENSE
+## License
 
 BSD License

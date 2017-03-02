@@ -26,41 +26,41 @@ module.exports = [
 	  description: 'This action run ubuntu project',
 	  name: 'run-ubuntu',
 	  options: [{
-	    command: 'root',
+	    command: '--root',
 	    type: 'string',
 	    description: 'Override the root directory for the ubuntu build (which contains the ubuntu directory)',
 	  }, {
-	    command: 'live-reload',
+	    command: '--live-reload',
 	    description: 'Start with live reloading enabled',
 	    default: false
 	  }, {
-	    command: 'host',
+	    command: '--host',
 	    type: 'string',
 	    description: 'Set packager host'
 	  }, {
-	    command: 'port',
+	    command: '--port',
 	    type: 'string',
 	    description: 'Set packager port'
 	  }, {
-	    command: 'executor',
+	    command: '--executor',
 	    type: 'string',
 	    description: 'Name of executor to use'
 	  }, {
-	    command: 'arch',
+	    command: '--arch',
 	    type: 'string',
 	    description: 'Set build architecture (ARM, x86, x64)',
 	    default: process.arch
 	  }, {
-	    command: 'plugins-path',
+	    command: '--plugins-path',
 	    type: 'string',
 	    description: 'Path to node modules',
 	    default: process.cwd() + "/ubuntu/plugins"
 	  }, {
-	    command: 'click',
+	    command: '--click',
 	    description: 'Build a click package',
 	    default: false
 	  }, {
-	    command: 'snap',
+	    command: '--snap',
 	    description: 'Build a snap package',
 	    default: false
 	  }]
