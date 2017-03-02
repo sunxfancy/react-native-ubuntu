@@ -8,12 +8,12 @@
 # of patent rights can be found in the PATENTS file in the same directory.
 
 # XXX: Don't move this script
-cd $(dirname $0)
+cd $(dirname $0)/build
 
 # Workaround
-rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake Makefile
+# rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake Makefile
 
 # Build project
-cmake . && make -j4 && cp ./bin/<%= name %> click/
+cmake .. && make -j4 && cp ../bin/<%= name %> ../click/
 
 
