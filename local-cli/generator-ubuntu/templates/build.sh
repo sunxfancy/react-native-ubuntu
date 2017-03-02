@@ -7,13 +7,16 @@
 # LICENSE file in the root directory of this source tree. An additional grant
 # of patent rights can be found in the PATENTS file in the same directory.
 
+
+(mkdir $(dirname $0)/build) && (echo "make dir build")
+
 # XXX: Don't move this script
-cd $(dirname $0)/build
+# cd $(dirname $0)/build
 
 # Workaround
 # rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake Makefile
 
 # Build project
-cmake .. && make -j4 && cp ../bin/<%= name %> ../click/
+cd $(dirname $0)/build && cmake .. && make -j4 && cp ./bin/<%= name %> ../click/
 
 

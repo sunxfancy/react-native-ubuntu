@@ -16,7 +16,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../node_modules/react-native-ubuntu
 
 configure_file(
   run-app.sh.in
-  ${CMAKE_CURRENT_BINARY_DIR}/run-app.sh
+  ${CMAKE_CURRENT_SOURCE_DIR}/run-app.sh
   @ONLY
 )
 
