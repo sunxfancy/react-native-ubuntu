@@ -103,26 +103,40 @@ int ReactModuleData::id() const
 
 QString ReactModuleData::name() const
 {
-  return qobject_cast<ReactModuleInterface*>(d_func()->moduleImpl)->moduleName();
+  return normalizeName(qobject_cast<ReactModuleInterface*>(d_func()->moduleImpl)->moduleName());
 }
 
+// Format:
+// moduleName, constants, methods, promiseMethods, syncMethods
+// constants is an object
+// methods is the list of methods' names
+// promisMethods and syncMethods are lists contain the ids of the methods
 QVariant ReactModuleData::info() const
 {
   Q_D(const ReactModuleData);
 
-  QVariantMap config;
-  config.insert("moduleID", d->id);
+  QVariantList config;
+  config.append(name());  // name first
 
   if (!d->constants.isEmpty())
-    config.insert("constants", d->constants);
+    config.append(d->constants); // constants second
+  else
+    config.append(QVariantMap{});
 
-  QVariantMap methodConfig;
+  QVariantList methodConfig;
+  QVariantList promiseMethods;
+  QVariantList syncMethods;
   for (int i = 0; i < d->methods.size(); ++i) {
-    methodConfig.insert(d->methods.at(i)->name(),
-                        QVariantMap{{"methodID", i}, {"type", d->methods.at(i)->type()}});
+    auto method = d->methods.at(i);
+    methodConfig.append(method->name());
+    if (method->type() == "remote") syncMethods.append(i);
+    if (method->type() == "remoteAsync") promiseMethods.append(i);
   }
-  if (!methodConfig.isEmpty())
-    config.insert("methods", methodConfig);
+  if (!methodConfig.isEmpty()) {
+    config.append((QVariant)methodConfig);  // others
+    config.append((QVariant)promiseMethods);
+//    config.append((QVariant)syncMethods); // sync need nativeCallSyncHook support
+  }
 
   return config;
 }
@@ -137,3 +151,10 @@ ReactViewManager* ReactModuleData::viewManager() const
 {
   return qobject_cast<ReactModuleInterface*>(d_func()->moduleImpl)->viewManager();
 }
+
+QString ReactModuleData::normalizeName(QString name) {
+  if (name.startsWith("RCT")) return name.mid(3);
+  if (name.startsWith("RK")) return name.mid(2);
+  return name;
+}
+

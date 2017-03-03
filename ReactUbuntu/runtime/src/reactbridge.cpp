@@ -50,6 +50,7 @@
 #include "ubuntutextfieldmanager.h"
 #include "ubuntudatepickermanager.h"
 #include "ubuntucomponentsloader.h"
+#include "reactwebsocket.h"
 
 
 class ReactBridgePrivate
@@ -82,6 +83,7 @@ public:
       new ReactTextManager,
       new ReactImageManager,
       new ReactExceptionsManager,
+      new ReactWebSocket,
     };
   }
 
@@ -399,11 +401,11 @@ void ReactBridge::injectModules()
 {
   Q_D(ReactBridge);
 
-  QVariantMap moduleConfig;
+  QVariantList moduleConfig;
 
   for (auto& md : d->modules) {
-//    qDebug() << "Injecting module" << md->name();
-    moduleConfig.insert(md->name(), md->info());
+    qDebug() << "Injecting module" << md->name();
+    moduleConfig.append(md->info());
   }
 
   d->executor->injectJson("__fbBatchedBridgeConfig", QVariantMap{

@@ -38,6 +38,7 @@ ReactComponentData::~ReactComponentData()
 QString ReactComponentData::name() const
 {
   QString mn = m_moduleInterface->viewManager()->moduleName();
+//  mn = normalizeName(mn);
   int mi = mn.indexOf("Manager");
   if (mi != -1)
     return mn.left(mi);
@@ -142,4 +143,10 @@ QQuickItem* ReactComponentData::createView(int tag, const QVariantMap& propertie
 ReactModuleMethod* ReactComponentData::method(int id) const
 {
   return m_moduleData->method(id);
+}
+
+QString ReactComponentData::normalizeName(QString name) {
+  if (name.startsWith("RCT")) return name.mid(3);
+  if (name.startsWith("RK")) return name.mid(2);
+  return name;
 }

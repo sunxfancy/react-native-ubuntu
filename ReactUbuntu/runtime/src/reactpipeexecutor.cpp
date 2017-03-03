@@ -51,7 +51,7 @@ struct RegisterClass {
 class ReactPipeExecutorPrivate : public QObject {
   Q_OBJECT
 public:
-  bool logErrors = true; // default debug model
+  bool logErrors = true;
   QProcess* nodeProcess = nullptr;
   QStateMachine* machina = nullptr;
   QByteArray inputBuffer;

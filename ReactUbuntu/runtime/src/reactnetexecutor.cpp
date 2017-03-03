@@ -144,6 +144,7 @@ void ReactNetExecutor::init()
 void ReactNetExecutor::injectJson(const QString& name, const QVariant& data)
 {
   QJsonDocument doc = QJsonDocument::fromVariant(data);
+
   processRequest(name.toLocal8Bit() + "=" + doc.toJson(QJsonDocument::Compact));
 }
 

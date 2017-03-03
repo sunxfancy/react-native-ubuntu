@@ -14,6 +14,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Qml REQUIRED)
 find_package(Qt5Quick REQUIRED)
+find_package(Qt5WebSockets REQUIRED)
 
 set(
   SRC
@@ -49,6 +50,7 @@ set(
   reactuimanager.cpp
   reactredboxitem.cpp
   reactexceptionsmanager.cpp
+  reactwebsocket.cpp
   ubuntucomponentsloader.cpp
   ubuntucomponentmodule.cpp
   ubuntuscrollviewmanager.cpp
@@ -77,7 +79,7 @@ set_target_properties(
 )
 endif()
 
-qt5_use_modules(react-native Core Qml Quick)
+qt5_use_modules(react-native Core Qml Quick WebSockets)
 
 add_custom_target(
   copy-qmldir ALL

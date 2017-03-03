@@ -42,6 +42,7 @@ public:
 private:
   ReactModuleData* m_moduleData;
   ReactModuleInterface* m_moduleInterface;
+  static QString normalizeName(QString name);
 };
 
 

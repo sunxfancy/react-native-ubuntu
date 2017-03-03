@@ -41,6 +41,8 @@ public:
 
 private:
   QScopedPointer<ReactModuleDataPrivate> d_ptr;
+  static QString normalizeName(QString name);
+
 };
 
 #endif // REACTMODULEDATA_H
